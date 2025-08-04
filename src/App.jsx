@@ -5,11 +5,13 @@ import Pricing from "./pages/Pricing";
 import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
 import CityList from "./components/CityList";
+import CountryList from "./components/CountryList";
 import NotFound from "./pages/NotFound";
 import { useEffect, useState } from "react";
 function App() {
   const ORGIGINAL_URL = "http://localhost:8000";
   const [cities, setCities] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(function () {
@@ -19,6 +21,7 @@ function App() {
         const res = await fetch(`${ORGIGINAL_URL}/cities`);
         const data = await res.json();
         setCities(data);
+
       } catch {
         alert("error in geting Data");
       } finally {
@@ -43,7 +46,7 @@ function App() {
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
-          <Route path="counteries" element={<p>List of Countries</p>} />
+          <Route path="counteries" element={<CountryList cities={cities} isLoading={isLoading} />} />
           <Route path="form" element={<p>form</p>} />
         </Route>
         <Route path="login" element={<Login />} />
