@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import styles from "./City.module.css";
 import { useParams, useSearchParams } from "react-router-dom";
+import { useCities } from "../CitiesProvider";
+import Spinner from "./Spinner";
+import ButtonBack from "./ButtonBack";
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -9,25 +13,38 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  // TEMP DATA
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "🇵🇹",
-    date: "2027-10-31T15:59:59.138Z",
-    notes: "My favorite city so far!",
-  };
+  const { setCurrentCity, currentCity, ORIGINAL_URL, isLoading, setIsLoading } =
+    useCities();
 
-  const { cityName, emoji, date, notes } = currentCity;
   const { id } = useParams();
+  console.log(id);
+  useEffect(
+    function () {
+      async function getCity(id) {
+        try {
+          setIsLoading(true);
+          const res = await fetch(`${ORIGINAL_URL}/cities/${id}`);
+          const data = await res.json();
+          setCurrentCity(data);
+        } catch {
+          alert("Error in Getting Data");
+        } finally {
+          setIsLoading(false);
+        }
+      }
+      getCity(id);
+    },
+    [id]
+  );
+  const { cityName, emoji, date, notes } = currentCity;
+
   const [searchUrl, setSearchUrl] = useSearchParams({});
   const lat = searchUrl.get("lat");
   const lng = searchUrl.get("lng");
+  if (isLoading) return <Spinner />;
   return (
     <div className={styles.city}>
-      <h1>City {id}</h1>
-      <h2>{lat}</h2>
-      <h2>{lng}</h2>
-      {/* <div className={styles.row}>
+      <div className={styles.row}>
         <h6>City name</h6>
         <h3>
           <span>{emoji}</span> {cityName}
@@ -59,7 +76,7 @@ function City() {
 
       <div>
         <ButtonBack />
-      </div> */}
+      </div>
     </div>
   );
 }
