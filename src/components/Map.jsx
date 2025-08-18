@@ -12,13 +12,11 @@ import { useEffect, useState } from "react";
 import { useCities } from "../CitiesProvider";
 import { useGeolocation } from "./GetGeoLocation";
 import Button from "./Button";
+import { useUrlPosition } from "./useUrlPosition";
 export default function Map() {
   const { cities } = useCities();
 
-  const [searchParams, setSearcParams] = useSearchParams();
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
-
+  const { lat, lng } = useUrlPosition()
   const {
     isLoading: isLoadingGeoLocaion,
     position: positionGeoLocation,
@@ -63,7 +61,7 @@ export default function Map() {
             position={[city.position.lat, city.position.lng]}
           >
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              {city.notes ? city.notes : `${city.cityName} ${city.emoji}`}
             </Popup>
           </Marker>
         ))}

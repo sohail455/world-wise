@@ -1,23 +1,28 @@
 import { Link, useParams } from "react-router-dom";
 import styles from "./CityItem.module.css";
 import { useCities } from "../CitiesProvider";
+import Button from "./Button";
 
 function CityItem({ city }) {
-  const { currentCity } = useCities();
+  const { currentCity, deleteCity } = useCities();
   const { id, position } = city || {};
+  function handelDeleteCountry(e) {
+    e.preventDefault()
+    deleteCity(id)
+  }
   return (
-    <Link
-      to={`${id}?lat=${position.lat}&lng=${position.lng}`}
-      className={`${styles.cityItem} ${
-        currentCity === id ? styles["cityItem--active"] : ""
-      }`}
-    >
-      <li>
+    <li>
+      <Link
+        to={`${id}?lat=${position.lat}&lng=${position.lng}`}
+        className={`${styles.cityItem} ${currentCity === id ? styles["cityItem--active"] : ""
+          }`}
+      >
         <span className={styles.emoji}>{city.emoji}</span>
         <h3 className={styles.name}>{city.cityName}</h3>
         <time className={styles.date}>{city.date}</time>
-      </li>
-    </Link>
+        <button className={styles.deleteBtn} onClick={e => handelDeleteCountry(e)}>X</button>
+      </Link>
+    </li>
   );
 }
 

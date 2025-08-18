@@ -2,6 +2,7 @@
 .cityItem:link,
 .cityItem:visited {
   display: flex;
+  flex-direction: row;
   gap: 1.6rem;
   align-items: center;
 

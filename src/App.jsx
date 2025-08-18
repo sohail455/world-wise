@@ -11,6 +11,7 @@ import CountryList from "./components/CountryList";
 import NotFound from "./pages/NotFound";
 
 import { CitiesProvider } from "./CitiesProvider";
+import Message from "./components/Message";
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
             <Route path="form" element={<Form />} />
             <Route path="cities" element={<CityList />} />
             <Route path="counteries" element={<CountryList />} />
-            <Route path="form" element={<p>form</p>} />
+
+
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
