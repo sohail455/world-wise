@@ -47,7 +47,7 @@ function Form() {
         console.log(data)
         setCityName(data.city)
         setCountry(data.countryName)
-        setEmoji(data.countryCode)
+        setEmoji(convertToEmoji(data.countryCode))
       } catch (err) {
         setGeoLocationError(err.message)
       } finally {

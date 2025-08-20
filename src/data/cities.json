@@ -35,6 +35,102 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Giza",
+      "country": "Egypt",
+      "emoji": "🇪🇬",
+      "date": "2025-08-20T11:08:23.129Z",
+      "notes": "",
+      "position": {
+        "lat": "30.10219602801783",
+        "lng": "31.161872774880916"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "Negev",
+      "country": "Israel",
+      "emoji": "🇮🇱",
+      "date": "2025-08-20T11:25:59.869Z",
+      "notes": "",
+      "position": {
+        "lat": "31.052131881624625",
+        "lng": "34.86193601877953"
+      },
+      "id": 98443199
+    },
+    {
+      "cityName": "Lazanias",
+      "country": "Cyprus",
+      "emoji": "🇨🇾",
+      "date": "2025-08-20T11:26:17.681Z",
+      "notes": "",
+      "position": {
+        "lat": "34.95527216678836",
+        "lng": "33.18165787316706"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Hala'ib",
+      "country": "Egypt",
+      "emoji": "🇪🇬",
+      "date": "2025-08-20T11:26:27.266Z",
+      "notes": "",
+      "position": {
+        "lat": "22.296911478258963",
+        "lng": "35.68630066375751"
+      },
+      "id": 98443201
+    },
+    {
+      "cityName": "Halfa",
+      "country": "Sudan (the)",
+      "emoji": "🇸🇩",
+      "date": "2025-08-20T11:26:34.638Z",
+      "notes": "",
+      "position": {
+        "lat": "22.15533122385746",
+        "lng": "31.45495085501843"
+      },
+      "id": 98443202
+    },
+    {
+      "cityName": "Markaz al Waḩat ad Dakhilah",
+      "country": "Egypt",
+      "emoji": "🇪🇬",
+      "date": "2025-08-20T11:27:36.963Z",
+      "notes": "",
+      "position": {
+        "lat": "24.2846197782845",
+        "lng": "27.446294546272203"
+      },
+      "id": 98443203
+    },
+    {
+      "cityName": "Camara de Lobos",
+      "country": "Portugal",
+      "emoji": "🇵🇹",
+      "date": "2025-08-20T11:55:07.520Z",
+      "notes": "",
+      "position": {
+        "lat": "32.67329308146695",
+        "lng": "-17.003168936104345"
+      },
+      "id": 98443204
+    },
+    {
+      "cityName": "Chamusca",
+      "country": "Portugal",
+      "emoji": "🇵🇹",
+      "date": "2025-08-20T12:04:56.581Z",
+      "notes": "",
+      "position": {
+        "lat": "39.31472981160877",
+        "lng": "-8.331803692468679"
+      },
+      "id": 98443205
     }
   ]
 }

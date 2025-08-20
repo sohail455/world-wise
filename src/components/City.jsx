@@ -4,6 +4,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { useCities } from "../CitiesProvider";
 import Spinner from "./Spinner";
 import ButtonBack from "./ButtonBack";
+
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -13,35 +14,39 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  const { setCurrentCity, currentCity, ORIGINAL_URL, isLoading, setIsLoading } =
-    useCities();
+  //consume the context data
+  const { currentCity, isLoading, getCity } = useCities();
 
+  //Getting the Country ID from the URL
   const { id } = useParams();
-  console.log(id);
-  useEffect(
-    function () {
-      async function getCity(id) {
-        try {
-          setIsLoading(true);
-          const res = await fetch(`${ORIGINAL_URL}/cities/${id}`);
-          const data = await res.json();
-          setCurrentCity(data);
-        } catch {
-          alert("Error in Getting Data");
-        } finally {
-          setIsLoading(false);
-        }
-      }
-      getCity(id);
-    },
-    [id]
-  );
+  //Sync Between the Coming ID and the CurrentCity State
+  useEffect(() => {
+    async function fetchCity() {
+      await getCity(id);
+    }
+    fetchCity();
+  }, [id]);
+  //Selecting the data from the currentCity State 
+  /*  {
+      "cityName": xxx,
+      "country": xxxx,
+      "emoji": xxx,
+      "date": xxxxx,
+      "notes": xxxxx,
+      "position": {
+        "lat": xxxx,
+        "lng": xxxx
+      },
+      "id": xxxx
+    } */
   const { cityName, emoji, date, notes } = currentCity;
 
-  const [searchUrl, setSearchUrl] = useSearchParams({});
-  const lat = searchUrl.get("lat");
-  const lng = searchUrl.get("lng");
+  //the isloading State will be true if currentCity State being Fecthed until  
+  // dispatch({ type: "city/current", payload: data }) completed so isLoading return to false 
+  // until this happens i will display spinner in <Outlet/> component.
   if (isLoading) return <Spinner />;
+
+  //if isLoading True again the city information with city styling will be displayed on the <Outlet/>.
   return (
     <div className={styles.city}>
       <div className={styles.row}>

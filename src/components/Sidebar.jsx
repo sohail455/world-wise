@@ -8,7 +8,11 @@ function SideBar() {
     <div className={styles.sidebar}>
       <Logo />
       <AppNav />
+
+      {/* *****The Prince**** */}
       <Outlet />
+      {/* ******************* */}
+
       <footer className={styles.footer}>
         &copy; this app belongs to Sohail
       </footer>
